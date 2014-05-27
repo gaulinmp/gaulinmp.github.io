@@ -261,13 +261,12 @@ ul.repo-list>li {
     padding-top: 50px;
 }
 
-.footer-triple-col {
+.footer-col {
     padding-top: 50px;
     padding-bottom: 50px;
     background-color: #111;
 }
-
-.footer-triple-col p {
+.footer-col p {
     margin-bottom: 0;
 }
 
