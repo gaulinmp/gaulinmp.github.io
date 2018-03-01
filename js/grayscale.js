@@ -135,4 +135,6 @@ var mapoptions = {
     }]
 };
 
-var map = new google.maps.Map(document.getElementById('minimap'), mapoptions);
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('minimap'), mapoptions);
+}
