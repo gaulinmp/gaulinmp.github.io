@@ -22,7 +22,7 @@ $(function() {
 //Google Map Skin - Get more at http://snazzymaps.com/
 var mapoptions = {
     zoom: 18,
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: 40.7616395, lng: -111.8439152},
     mapTypeControlOptions: { mapTypeIds: ['roadmap']},
     disableDefaultUI: true,
     styles: [{
