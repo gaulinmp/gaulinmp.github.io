@@ -22,8 +22,8 @@ $(function() {
 //Google Map Skin - Get more at http://snazzymaps.com/
 var mapoptions = {
     zoom: 18,
-    center: new google.maps.LatLng(29.7173812, -95.4036041),
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    center: {lat: -34.397, lng: 150.644},
+    mapTypeControlOptions: { mapTypeIds: ['roadmap']},
     disableDefaultUI: true,
     styles: [{
         "featureType": "water",
