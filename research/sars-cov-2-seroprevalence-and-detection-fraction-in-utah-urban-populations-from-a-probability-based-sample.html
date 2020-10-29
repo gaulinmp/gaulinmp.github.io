@@ -16,7 +16,7 @@
     <meta name="msapplication-config" content="/static/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Coronavirus</title>
+    <title>SARS-CoV-2 seroprevalence and detection fraction in Utah urban populations from a probability-based sample</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
@@ -26,15 +26,15 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
         crossorigin="anonymous"> -->
 
-    <link rel="stylesheet" href="./theme/css/details-shim.min.css" />
-    <link rel="stylesheet" href="./theme/css/reset.css" />
+    <link rel="stylesheet" href="../theme/css/details-shim.min.css" />
+    <link rel="stylesheet" href="../theme/css/reset.css" />
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600,600italic,700,700italic" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" />
     <!-- Local CSS to override bootstrap -->
-    <!-- <link rel="stylesheet" href="./theme/css/main.compiled.css" /> -->
-      <link rel="stylesheet" href="./theme/css/main.compiled.css?18daa125">
+    <!-- <link rel="stylesheet" href="../theme/css/main.compiled.css" /> -->
+      <link rel="stylesheet" href="../theme/css/main.compiled.css?18daa125">
 
     <!--[if IE]>
         <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -49,114 +49,78 @@
       <div class="col-md-4 col-lg-3 no-print" id="leftnav">
 <header class="container title" role='navigation'>
   <h1>
-    <a href="./">Maclean Gaulin </a>
+    <a href="../">Maclean Gaulin </a>
   </h1>
   <nav  class='nav flex-md-column flex-sm-row justify-content-center'>
 
-        <a class='nav-link '
-            href="./research">Research</a>
+        <a class='nav-link active'
+            href="../research">Research</a>
 
 <a class='nav-link page '
-            href="./contact.html">Contact</a>
+            href="../contact.html">Contact</a>
 <a class='nav-link page '
-            href="./resources.html">Resources</a>
+            href="../resources.html">Resources</a>
 <a class='nav-link page '
-            href="./resume.html">Resume</a>
+            href="../resume.html">Resume</a>
 <a class='nav-link page '
-            href="./vita.html">Vita</a>
+            href="../vita.html">Vita</a>
 
   </nav>
 </header><!-- /#banner -->      </div>
 
       <div class="col-md-8 col-lg-9 body">
         <main role="main">
-<section class="container">
-    <!-- <h1 class="entry-title">Coronavirus</h1> -->
-    
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="//mgaulin.com/covid/utah_pi_pubrate.js"></script>
+<section id="content" class="body">
+  <article>
+    <header>
+      <h2 class="entry-title">
+        <a href="../research/sars-cov-2-seroprevalence-and-detection-fraction-in-utah-urban-populations-from-a-probability-based-sample.html" rel="bookmark" class='title'
+           title="Permalink to SARS-CoV-2 seroprevalence and detection fraction in Utah urban populations from a probability-based sample">SARS-CoV-2 seroprevalence and detection fraction in Utah urban populations from a probability-based sample</a></h2>
+      <div class="meta-info">
+  <div class="authors">
+      <address class="vcard author">
+        By           Matthew Samore
+,          Adam Looney
+,          Brian Orleans
+,          Tom Greene
+,          Nathan Seegert
+,          Julio C Delgado
+,          Angela Presson
+,          Chong Zhang
+,          Jian Ying
+,          Yue Zhang
+,          Jincheng Shen
+,          Patricia Slev
+,          Maclean Gaulin
+,          Mu-Jeung Yang
+,          Andrew T. Pavia
+,          Stephen C Alder
+      </address>
+  </div>
 
-    <style>
-      .stat_number {
-        font-size: 1.8em;
-        color: black;
-        font-weight: bolder;
-        padding-top: 6pt;
-      }
-    </style>
+  <div class="date" title="2020-10-28T00:00:00-05:00">
+    Working Paper: 2020-10-28
+  </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-lg-6">
-          <div class="alert alert-primary" role="alert">
-            Estimated Prevalence (Cases)
-            <div class="stat_number">
-              <span id="estimated_prevalence"></span>
-              <span id="estimated_cases"></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 col-lg-6">
-          <div class="alert alert-danger" role="alert">
-            Reported Prevalence (Cases)
-            <div class="stat_number">
-              <span id="reported_prevalence"></span>
-              <span id="reported_cases"></span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="ssrn">
+    <a class="url fn" href="https://www.medrxiv.org/content/10.1101/2020.10.26.20219907v1"></a>
+  </div>
+      </div><!-- /.entry-content -->
+    </header>
+    <main class="entry-content justify">
+      <p>This project's aim was to generate an unbiased estimate of the incidence of SARS-CoV-2 infection in four urban counties in Utah.
+A multi-stage sampling design was employed to randomly select community-representative participants 12 years and over.
+Between May 4 and June 30, 2020, surveys were completed and sera drawn from 8,108 individuals belonging to 5,125 households.
+A qualitative chemiluminescent microparticle immunoassay was used to detect the presence of IgG antibody to SARS-CoV-2.
+The overall prevalence of IgG antibody to SARS-CoV-2 was estimated at 0.8%.
+The estimated seroprevalence-to-case count ratio was 2.4, corresponding to a detection fraction of 42%.
+Only 0.2% of individuals who had a nasopharyngeal swab collected were reverse transcription polymerase chain reaction (RT-PCR) positive.
+The prevalence of antibodies to SARS-CoV-2 in Utah urban areas between May and June was low and the prevalence of positive RT-PCR even lower.
+The detection fraction for COVID-19 in Utah was comparatively high.
+Probability-based sampling provides an effective method for robust estimates of community-based SARS-CoV-2 seroprevalence and detection fraction among urban populations in Utah.</p>
 
-      <div class="row justify-content-center">
-        <div class="col-12">
-          <div class="chart text-center">
-            <div id="pi_chart" style="width: 100%; height: 400px"></div>
-          </div>
-          <div class="chart_text">
-            <p>
-              This graph presents estimated and reported (from CDC) data on the case rates in Utah (per 100,000).
-              The calculation of the estimated case rates comes from <a href="/research/what-is-the-true-active-prevalence-of-covid-19.html">our working paper</a>, and is based on the 7-day average of daily positivity rate (# positives / # tests).
-              See the paper for more information.
-            </p>
-            <p class="text-muted small" style="padding-top:1em;">Updated <span id="updated_date"></span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script type="text/javascript">
-      google.charts.load('current', {
-        'packages': ['corechart']
-      });
-
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var options = {
-          title: 'Estimated Coronavirus in Utah',
-          curveType: 'function',
-          width: "100%",
-          height: "400px",
-          legend: {
-            position: 'bottom'
-          },
-          theme: 'material'
-        };
-
-        var chartdata = google.visualization.arrayToDataTable(data);
-
-        var chart = new google.visualization.LineChart(document.getElementById('pi_chart'));
-        chart.draw(chartdata, options);
-
-        document.getElementById('estimated_prevalence').innerHTML = Math.floor(estimated_prevalence * 100*1000) + "/100k";
-        document.getElementById('estimated_cases').innerHTML = "(" + estimated_cases + ")";
-        document.getElementById('reported_prevalence').innerHTML = Math.floor(reported_prevalence * 100*1000) + "/100k";
-        document.getElementById('reported_cases').innerHTML = "(" + reported_cases + ")";
-        document.getElementById('updated_date').innerHTML = updated_date;
-
-      }
-    </script>
-  
+    </main><!-- /.entry-content -->
+  </article>
 </section>
         </main>
       </div>
@@ -188,8 +152,8 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script> -->
 
 <!-- Thanks https://github.com/tyleruebele/details-shim -->
-<script src="./theme/js/details-shim.min.js"></script>
-<script src="./theme/js/cv.js"></script>
+<script src="../theme/js/details-shim.min.js"></script>
+<script src="../theme/js/cv.js"></script>
 
 
 <script type="text/javascript">
