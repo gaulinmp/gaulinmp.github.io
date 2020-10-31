@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+    <link rel="manifest" href="/static/icons/site.webmanifest">
+    <link rel="mask-icon" href="/static/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/static/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#9f00a7">
+    <meta name="msapplication-config" content="/static/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Coronavirus</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd"
+        crossorigin="anonymous"> -->
+
+    <link rel="stylesheet" href="./theme/css/details-shim.min.css" />
+    <link rel="stylesheet" href="./theme/css/reset.css" />
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Crimson+Text:400,400italic,600,600italic,700,700italic" />
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" />
+    <!-- Local CSS to override bootstrap -->
+    <!-- <link rel="stylesheet" href="./theme/css/main.compiled.css" /> -->
+      <link rel="stylesheet" href="./theme/css/main.compiled.css?18daa125">
+
+    <!--[if IE]>
+        <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <!--main-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 no-print" id="leftnav">
+<header class="container title" role='navigation'>
+  <h1>
+    <a href="./">Maclean Gaulin </a>
+  </h1>
+  <nav  class='nav flex-md-column flex-sm-row justify-content-center'>
+
+        <a class='nav-link '
+            href="./research">Research</a>
+
+<a class='nav-link page '
+            href="./contact.html">Contact</a>
+<a class='nav-link page '
+            href="./resources.html">Resources</a>
+<a class='nav-link page '
+            href="./resume.html">Resume</a>
+<a class='nav-link page '
+            href="./vita.html">Vita</a>
+
+  </nav>
+</header><!-- /#banner -->      </div>
+
+      <div class="col-md-8 col-lg-9 body">
+        <main role="main">
+<section class="container">
+    <!-- <h1 class="entry-title">Coronavirus</h1> -->
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="//mgaulin.com/files/estimated_reported.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Load the d3 library. -->
+    <script src="https://d3js.org/d3.v6.min.js" charset="utf-8"></script>
+
+    <style>
+      .stat_number {
+        font-size: 1.8em;
+        color: black;
+        font-weight: bolder;
+        padding-top: 6pt;
+      }
+    </style>
+
+    <!-- Modal graph popup -->
+    <div class="modal fade" id="graphPopup" tabindex="-1" role="dialog" aria-labelledby="graphPopupTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div style="width: 100%; height: 550px">
+              <div id="graphPopupInner">&nbsp;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="btn-group" role="group" aria-label="Map Data Selection">
+          <button type="button" class="btn btn-primary" id="reported">Reported</button>
+          <button type="button" class="btn btn-outline-primary" id="estimated">Estimated</button>
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#graphPopup">
+            Popup
+          </button> -->
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="chart text-center">
+            <div id="state_map" xstyle="width: 100%; height: 400px"></div>
+          </div>
+          <div class="chart_text">
+            <p></p>
+            <p></p>
+            <p>
+              This graph presents estimated and reported (from CDC) data on the case rates in Utah (per 100,000).
+              The calculation of the estimated case rates comes from <a href="/research/what-is-the-true-active-prevalence-of-covid-19.html">our working paper</a>, and is based on the 7-day average of daily positivity rate (# positives / # tests).
+              See the paper for more information.
+            </p>
+            <p class="text-muted small" style="padding-top:1em;">Updated <span id="updated_date"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages': ['corechart']
+      });
+
+      function drawPopupChart(data) {
+        let googleData = [
+          [ {label: 'Date', id: 'Date'},
+            {label: 'Reported', id: 'Reported'},
+            {label: 'Estimated', id: 'Estimated'}]
+          ].concat(data.map(d => [d.date, d.reported, d.estimated]));
+
+        var options = {
+          title: 'Estimated Coronavirus in ' + data[0]['state'],
+          curveType: 'function',
+          width: "100%",
+          height: "550px",
+          legend: {
+            position: 'bottom'
+          },
+          chart: {
+            interpolateNulls: true
+          }
+        };
+
+        var chartdata = google.visualization.arrayToDataTable(googleData);
+
+        var chart = new google.visualization.LineChart(document.getElementById('graphPopupInner'));
+        chart.draw(chartdata, options);
+      }
+
+      var updating_map = false;
+
+      // set the dimensions and margins of the graph
+      var margins={top: 50, right: 50, bottom: 50, left: 50},
+        stateWidth = 75,
+        stateHeight = 75,
+        stateXGap = 10,
+        stateYGap = 15;
+
+      var stateGridCoords = {
+      "ME" : { "state": "ME", "row": 0, "col": 10 },
+      "WI" : { "state": "WI", "row": 1, "col": 5 },
+      "VT" : { "state": "VT", "row": 1, "col": 9 },
+      "NH" : { "state": "NH", "row": 1, "col": 10 },
+      "WA" : { "state": "WA", "row": 2, "col": 0 },
+      "ID" : { "state": "ID", "row": 2, "col": 1 },
+      "MT" : { "state": "MT", "row": 2, "col": 2 },
+      "ND" : { "state": "ND", "row": 2, "col": 3 },
+      "MN" : { "state": "MN", "row": 2, "col": 4 },
+      "IL" : { "state": "IL", "row": 2, "col": 5 },
+      "MI" : { "state": "MI", "row": 2, "col": 6 },
+      "NY" : { "state": "NY", "row": 2, "col": 8 },
+      "MA" : { "state": "MA", "row": 2, "col": 9 },
+      "OR" : { "state": "OR", "row": 3, "col": 0 },
+      "NV" : { "state": "NV", "row": 3, "col": 1 },
+      "WY" : { "state": "WY", "row": 3, "col": 2 },
+      "SD" : { "state": "SD", "row": 3, "col": 3 },
+      "IA" : { "state": "IA", "row": 3, "col": 4 },
+      "IN" : { "state": "IN", "row": 3, "col": 5 },
+      "OH" : { "state": "OH", "row": 3, "col": 6 },
+      "PA" : { "state": "PA", "row": 3, "col": 7 },
+      "NJ" : { "state": "NJ", "row": 3, "col": 8 },
+      "CT" : { "state": "CT", "row": 3, "col": 9 },
+      "RI" : { "state": "RI", "row": 3, "col": 10 },
+      "CA" : { "state": "CA", "row": 4, "col": 0 },
+      "UT" : { "state": "UT", "row": 4, "col": 1 },
+      "CO" : { "state": "CO", "row": 4, "col": 2 },
+      "NE" : { "state": "NE", "row": 4, "col": 3 },
+      "MO" : { "state": "MO", "row": 4, "col": 4 },
+      "KY" : { "state": "KY", "row": 4, "col": 5 },
+      "WV" : { "state": "WV", "row": 4, "col": 6 },
+      "VA" : { "state": "VA", "row": 4, "col": 7 },
+      "MD" : { "state": "MD", "row": 4, "col": 8 },
+      "DE" : { "state": "DE", "row": 4, "col": 9 },
+      "AZ" : { "state": "AZ", "row": 5, "col": 1 },
+      "NM" : { "state": "NM", "row": 5, "col": 2 },
+      "KS" : { "state": "KS", "row": 5, "col": 3 },
+      "AR" : { "state": "AR", "row": 5, "col": 4 },
+      "TN" : { "state": "TN", "row": 5, "col": 5 },
+      "NC" : { "state": "NC", "row": 5, "col": 6 },
+      "SC" : { "state": "SC", "row": 5, "col": 7 },
+      "DC" : { "state": "DC", "row": 5, "col": 8 },
+      "OK" : { "state": "OK", "row": 6, "col": 3 },
+      "LA" : { "state": "LA", "row": 6, "col": 4 },
+      "MS" : { "state": "MS", "row": 6, "col": 5 },
+      "AL" : { "state": "AL", "row": 6, "col": 6 },
+      "GA" : { "state": "GA", "row": 6, "col": 7 },
+      "HI" : { "state": "HI", "row": 7, "col": 0 },
+      "AK" : { "state": "AK", "row": 7, "col": 1 },
+      "TX" : { "state": "TX", "row": 7, "col": 3 },
+      "FL" : { "state": "FL", "row": 7, "col": 8 }
+      };
+
+      var numStatesWide = d3.max(Object.values(stateGridCoords), d => d.col) + 1;
+      var numStatesTall = d3.max(Object.values(stateGridCoords), d => d.row) + 1;
+
+      var stateXScale = d3.scaleLinear()
+        .domain([0, numStatesWide])
+        .range([0, numStatesWide * (stateWidth + stateXGap)])
+        ;
+      var stateYScale = d3.scaleLinear()
+        .domain([0, numStatesTall])
+        .range([0, numStatesTall * (stateHeight + stateYGap)])
+        ;
+      var svg = d3.select("#state_map")
+        .append("svg")
+        .attr("width", stateXScale(numStatesWide) + margins.left + margins.right)
+        .attr("height", stateYScale(numStatesTall) + margins.top + margins.bottom)
+        ;
+      var popup = d3.select("#graphPopupInner")
+        .append("svg")
+        .attr("width", "600px")
+        .attr("height", '550px')
+        ;
+
+      //////////////////////////////////////////////////////////////////////////
+      // Function that draws state grid, called when data is done loading.
+      //////////////////////////////////////////////////////////////////////////
+      function draw_state_grid(data, whichLine="reported") {
+        if (updating_map) {console.log("Race condition!");return false;}
+        updating_map = true;
+
+        // Start fresh
+        d3.select("svg").selectAll("*").remove();
+
+        // group the data by state
+        stateGroups = d3.group(data, d => d.state);
+
+        // Create X and Y scales to go from input data to little chart space
+        var xScale = d3.scaleTime()
+          .domain(d3.extent(data, d => d.date))
+          .range([ 0, stateWidth ])
+          ;
+        var yScale = d3.scaleLinear()
+          .domain(d3.extent(data, d => d[whichLine]))
+          .range([ stateHeight, 0 ])
+          ;
+        var closestDate = d3.bisector(d => d.date).right;
+
+        var stateChart = svg.append("g")
+          .attr("transform", "translate(" + margins.left + "," + margins.top + ")")
+          .selectAll("g")
+          .data(stateGroups)
+          .enter()
+          .append("g")
+          .attr("width", stateWidth)
+          .attr("height", stateHeight)
+          .attr("transform",
+            function (state) {
+            return "translate(" + stateXScale(stateGridCoords[state[0]].col) + ","
+                                + stateYScale(stateGridCoords[state[0]].row) + ")";
+            })
+          ;
+        // Style the box background
+        stateChart
+          .append("rect")
+          .attr("width", stateWidth)
+          .attr("height", stateHeight)
+          .attr("fill", "#F0F0F0")
+          // Source: https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
+          .style("pointer-events", "all")
+          .on("click", function(event, d) {
+            $("#graphPopup").modal("show");
+            $('#graphPopup').on('shown.bs.modal', function (e) {
+              drawPopupChart(d[1]);
+            })
+          })
+          ;
+
+        // comment out scales
+        // Add X axis for 'date' with ticks every month
+        stateChart
+          .filter(d => stateGridCoords[d[0]].row == numStatesTall-1)
+          .append("g")
+          .attr("transform", "translate(0," + stateHeight + ")")
+          .call(d3.axisBottom(xScale).ticks(d3.timeMonth.every(1)))
+          .selectAll("text")
+          .attr("y", 0)
+          .attr("x", 9)
+          .attr("dy", ".35em")
+          .attr("transform", "rotate(90)")
+          .style("text-anchor", "start")
+          ;
+        // Add Y axis for 'pubRate' with ticks every 500
+        stateChart
+          .filter(d => stateGridCoords[d[0]].col == 0)
+          .append("g")
+          .call(d3.axisLeft(yScale).ticks(3).tickSize(0))
+          ;
+        // */
+
+        // Add chart itself
+        stateChart
+          .append("path")
+          .attr("fill", "none")
+          .attr("stroke", "red")
+          .attr("stroke-width", 1)
+          .attr("d", function(dat){
+                  return d3.line()
+                    .x(d => xScale(d.date))
+                    .y(d => yScale(d[whichLine]))
+                    (dat[1].filter(d => !isNaN(d[whichLine])));
+                })
+          ;
+        // Add titles
+        stateChart
+          .append("text")
+          .attr("text-anchor", "start")
+          .attr("fill", "black")
+          .attr("y", (stateYGap))
+          .attr("x", (stateWidth - 16) / 2)
+          .text(d => d[0])
+          ;
+
+        updating_map = false;
+      }
+
+      draw_state_grid(formatted_data, whichLine="reported");
+
+      d3.select("#estimated").on("click", function() {
+        if (updating_map) {return false;}
+        draw_state_grid(formatted_data, whichLine="estimated");
+        d3.select("#estimated").attr("class", "btn btn-primary");
+        d3.select("#reported").attr("class", "btn btn-outline-primary");
+      });
+      d3.select("#reported").on("click", function() {
+        if (updating_map) {return false;}
+        draw_state_grid(formatted_data, whichLine="reported");
+        d3.select("#reported").attr("class", "btn btn-primary");
+        d3.select("#estimated").attr("class", "btn btn-outline-primary");
+      });
+
+    </script>
+
+  
+</section>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <footer class='navbar fixed-bottom navbar-light bg-faded'>
+    <nav class='container'>
+      <div class="social pull-xs-left">
+            <a href="http://github.com/gaulinmp" target=_blank><!-- Github --></a>
+            <a href="https://www.linkedin.com/in/maclean-gaulin" target=_blank><!-- LinkedIn --></a>
+      </div><!-- /.social -->
+
+      <address class="vcard pull-xs-right">
+      &copy; Maclean Gaulin, 2020.
+      </address><!-- /#about -->
+    </nav>
+  </footer><!-- /#contentinfo -->
+
+
+
+<!-- jQuery first, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script> -->
+
+<!-- Thanks https://github.com/tyleruebele/details-shim -->
+<script src="./theme/js/details-shim.min.js"></script>
+<script src="./theme/js/cv.js"></script>
+
+
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-37522001-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
