@@ -16,7 +16,7 @@
     <meta name="msapplication-config" content="/static/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <title>Coronavirus</title>
+    <title>Covid</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
@@ -56,13 +56,15 @@
         <a class='nav-link '
             href="./research">Research</a>
 
-<a class='nav-link page '
+        <a class='nav-link page '
             href="./contact.html">Contact</a>
-<a class='nav-link page '
+        <a class='nav-link page active'
+            href="./covidmap.html">Covid</a>
+        <a class='nav-link page '
             href="./resources.html">Resources</a>
-<a class='nav-link page '
+        <a class='nav-link page '
             href="./resume.html">Resume</a>
-<a class='nav-link page '
+        <a class='nav-link page '
             href="./vita.html">Vita</a>
 
   </nav>
@@ -71,7 +73,7 @@
       <div class="col-md-8 col-lg-9 body">
         <main role="main">
 <section class="container">
-    <!-- <h1 class="entry-title">Coronavirus</h1> -->
+    <!-- <h1 class="entry-title">Covid</h1> -->
     
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="//mgaulin.com/files/estimated_reported.js"></script>
@@ -110,7 +112,7 @@
               This plot shows the Reported or Estimated case rates over time for each state. Click on any state to view a larger State graph. Estimation is calculated as described in <a href="/research/what-is-the-true-active-prevalence-of-covid-19.html">our working paper</a>, and is based on the 7-day average of daily positivity rate (# positives / # tests).
               See the paper for more information.
             </p>
-            <p class="text-muted small" style="padding-top:1em;">Updated <span id="updated_date"></span></p>
+            <!-- <p class="text-muted small" style='padding-top:1em;'>Updated <span id="updated_date"></span></p> -->
           </div>
         </div>
       </div>
@@ -290,6 +292,7 @@
           .attr("width", stateWidth)
           .attr("height", stateHeight)
           .attr("fill", "#F0F0F0")
+          .style("cursor", "zoom-in")
           // Source: https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
           .style("pointer-events", "all")
           .on("click", function(event, d) {
